@@ -1,8 +1,9 @@
 BUAN 4310 COURSE KNOWLEDGE
-Consolidated reference for yeoda v4
+Consolidated reference for yeoda v5
+Updated September 2026 from the current BUAN 4310 Spell Book
 
 Purpose
-These notes consolidate material from the instructor's uploaded BUAN 4310 lecture slides and the latest accessible BUAN 4310 HTML demonstrations from the spellbook. They are intended to ground course-related answers. If a topic is not covered here, the chatbot may still answer from general machine-learning knowledge, but it should not claim anything about whether that topic is required, optional, assessed, or part of a particular syllabus.
+These notes consolidate material from the instructor's uploaded BUAN 4310 lecture slides and the current accessible BUAN 4310 HTML demonstrations from the Spell Book. They are intended to ground course-related answers. The current Spell Book includes both R demonstrations and Python/Parseltongue counterparts for several machine-learning methods. If a topic is not covered here, the chatbot may still answer from general machine-learning knowledge, but it should not claim anything about whether that topic is required, optional, assessed, or part of a particular syllabus.
 
 ============================================================
 1. DATA MINING AND MACHINE LEARNING OVERVIEW
@@ -106,6 +107,19 @@ Normalisation / standardisation
 - A common z-score standardisation subtracts the mean and divides by the standard deviation.
 - Another approach rescales values to 0-1.
 - Distance-based methods such as kNN and clustering are particularly sensitive to scale.
+
+Basic data manipulation and reshaping
+- Preliminary work commonly includes selecting variables, filtering records, sorting, creating or recoding variables, grouping records and calculating summaries.
+- Grouped summaries can be used to compare counts or numerical measures across categories.
+- Data may need to be reshaped before analysis or visualisation.
+- The Spell Book demonstrates conversion from wide to long form, where repeated measurement columns are represented by a variable column and a value column.
+- Identifier variables should be retained when reshaping so that observations can still be traced correctly.
+
+Preliminary data exploration
+- Inspect variable names, dimensions, data types, summary statistics and category frequencies before modelling.
+- Explore unusual values, missingness, distributions and relationships between variables.
+- Descriptive exploration can reveal data-quality problems and can also suggest useful modelling choices.
+- Visualisation is part of exploration rather than merely presentation after a model is fitted.
 
 ============================================================
 3. OVERFITTING AND DATA PARTITIONING
@@ -246,6 +260,17 @@ Probabilities
 Cutoffs
 - When class probabilities are available for a binary target, different probability cutoffs can be evaluated in the same way as other classifiers.
 
+kNN regression
+- kNN can also predict a numerical outcome.
+- Instead of neighbours voting for a class, the numerical outcomes of nearby training records are combined to form the prediction.
+- The same issues of scaling, choice of k, training/validation separation and distance apply.
+- Numerical prediction should be evaluated with prediction-error measures such as RMSE or MAE rather than a confusion matrix.
+
+R and Python implementations
+- The current Spell Book contains R kNN demonstrations and a Python/Parseltongue counterpart.
+- In the Python demonstration, training and validation data are separated before modelling and StandardScaler is fitted from the training predictors before transformation.
+- The Python workflow uses scikit-learn tools for preprocessing, partitioning and kNN classification.
+
 ============================================================
 6. CROSS-VALIDATION
 ============================================================
@@ -305,6 +330,17 @@ Predictor subset selection
 - Forward selection starts with no predictors and adds predictors.
 - Backward elimination starts with all predictors and removes predictors.
 - Stepwise selection can add and remove predictors during the search.
+
+Transformations
+- The current Spell Book includes linear-regression demonstrations with transformed variables, including a machine-learning-oriented version.
+- Transformations may be explored when relationships are not adequately represented on the original scale.
+- A transformed model should still be evaluated on validation data rather than assumed to be better merely because it is more elaborate.
+
+Model diagnostics
+- Regression diagnostics use residuals and related plots or statistics to investigate whether a fitted model behaves as expected.
+- Diagnostics may help identify non-linearity, unusual observations, unequal residual variation or other model problems.
+- For explanatory modelling, assumption checks are central to interpretation and inference.
+- For predictive modelling, validation performance remains essential even when diagnostic checks are also performed.
 
 ============================================================
 8. CLASSIFICATION AND REGRESSION TREES
@@ -435,6 +471,15 @@ Linkage methods
 - Centroid linkage: distance between cluster centroids.
 - Ward's method: considers information loss and often produces clusters of roughly similar size.
 
+Non-hierarchical clustering / k-means
+- The current Spell Book also includes non-hierarchical clustering.
+- k-means requires the analyst to choose the number of clusters k.
+- Records are represented in a numerical feature space and assigned to clusters around centroids.
+- Because the solution can depend on starting values, multiple starts can be used rather than relying on a single initialisation.
+- The elbow method can compare within-cluster sums of squares across candidate values of k.
+- The silhouette method provides another way to compare candidate values of k and assess separation.
+- Choosing k is not purely mechanical; interpretability and usefulness of the resulting groups also matter.
+
 Cluster validation and interpretation
 - Clusters should be meaningful and useful.
 - Apparent clusters can occur by chance.
@@ -509,7 +554,180 @@ Use
 - It can be fast and effective for high-dimensional problems such as text classification.
 
 ============================================================
-14. MODEL-SELECTION PRINCIPLES
+14. LOGISTIC REGRESSION
+============================================================
+
+Purpose
+- Logistic regression is used for classification when the outcome is categorical, commonly binary.
+- A fitted binary logistic model can produce an estimated probability for the positive class.
+- In R, the Spell Book demonstrates logistic regression using a binomial generalised linear model and caret-based workflows.
+
+From probabilities to classes
+- Predicted probabilities can be converted to class labels using a cutoff.
+- A cutoff of 0.50 is a common starting point but is not automatically optimal.
+- Changing the cutoff changes the confusion matrix and the balance between sensitivity and specificity.
+- One Spell Book demonstration also illustrates selection of a cutoff using Youden's index, which seeks a favourable combination of sensitivity and specificity.
+
+Evaluation
+- Evaluate logistic regression on validation data rather than relying only on the fitted training model.
+- Useful measures include the confusion matrix, sensitivity, specificity, precision, F1 and ROC/AUC.
+- Gains, lift, response and cumulative response plots can also be used when ranked probability scores matter.
+
+Prediction
+- Logistic regression can be used to score new records after the model has been selected and evaluated.
+- Keep the distinction between the predicted probability and the final class produced after applying a cutoff.
+
+============================================================
+15. DISCRIMINANT ANALYSIS
+============================================================
+
+General concept
+- Discriminant analysis is a supervised classification method.
+- The current Spell Book demonstrates classification with a training/validation split and also demonstrates posterior class probabilities.
+- Linear discriminant analysis can be fitted using class-labelled training records and numerical predictors.
+
+Probabilities and prediction
+- A fitted discriminant model can return posterior probabilities for each possible class.
+- The predicted class is related to these class probabilities rather than being an unexplained label.
+- Validation data should be used to evaluate performance on records that were not used to fit the model.
+
+============================================================
+16. ASSOCIATION RULES AND MARKET-BASKET ANALYSIS
+============================================================
+
+General concept
+- Association rules look for combinations of items or events that occur together.
+- Market-basket analysis is a common application, but the same logic can be applied to other transaction-style data.
+- Data are represented as transactions containing items.
+
+Rule structure
+- A rule has an antecedent on the left-hand side and a consequent on the right-hand side.
+- The Apriori algorithm can generate candidate rules subject to minimum support and confidence thresholds.
+
+Support
+- Support measures how frequently the complete rule occurs in the transaction data.
+- A very rare rule can have high confidence but still be of limited practical use, so support matters.
+
+Confidence
+- Confidence measures how often the consequent appears among transactions containing the antecedent.
+- It can be read as a conditional success rate for the rule.
+
+Lift
+- Lift compares the observed co-occurrence with what would be expected without the association.
+- Lift equal to 1 indicates no improvement over independence.
+- Lift greater than 1 indicates a positive association; larger values indicate a stronger departure from independence.
+- Rules can be sorted by lift, but interpretation should still consider support, confidence and practical usefulness.
+
+============================================================
+17. COLLABORATIVE FILTERING AND RECOMMENDER SYSTEMS
+============================================================
+
+Ratings data
+- Collaborative filtering can use a user-by-item rating matrix containing observed ratings and missing entries for items not yet rated.
+- Similarity between users or items can be calculated from the available ratings.
+- The current Spell Book demonstration uses cosine similarity.
+
+Item-based collaborative filtering
+- The current demonstration uses item-based collaborative filtering (IBCF).
+- The recommender learns from the observed rating matrix and predicts ratings for currently unrated items.
+- Predicted ratings can then be used to produce a top-N recommendation.
+
+Interpretation
+- A recommendation is based on patterns in the ratings data; it is not evidence that the recommended item is objectively best.
+- Sparse ratings and limited overlap between users or items can make similarity and recommendations less stable.
+
+============================================================
+18. TEXT ANALYTICS AND TEXT CLUSTERING
+============================================================
+
+Text preparation
+- Text analytics usually requires substantial preprocessing before modelling.
+- The Spell Book demonstrates converting text to lower case, removing numbers, removing common and custom stop words, removing punctuation, stripping extra white space and stemming words to root forms.
+- Text can be organised as a corpus and converted into a term-document representation.
+
+Frequency analysis
+- Word counts can identify frequently occurring terms.
+- Frequent words can be displayed in tables, bar charts or word clouds.
+- Frequency alone does not establish meaning, importance or sentiment; interpretation still matters.
+
+Sentiment analysis
+- The Spell Book demonstrates assigning sentiment categories to words and aggregating those results for exploratory sentiment analysis.
+- Sentiment dictionaries are a rule-based representation of language and should not be treated as perfect understanding of context.
+
+Text clustering
+- Text records can be converted into numerical representations and then clustered.
+- The current demonstrations use k-means clustering and compare candidate values of k with elbow and silhouette methods.
+- Cluster interpretation can use frequent words and cluster-specific TF-IDF-style summaries to identify distinguishing terms.
+- Analysts can assign descriptive labels to clusters only after examining what the clusters contain.
+
+Latent Semantic Analysis (LSA)
+- Another Spell Book demonstration uses Latent Semantic Analysis before clustering.
+- LSA reduces a high-dimensional word-document representation into a smaller semantic space.
+- Documents using different vocabulary but discussing similar themes may become closer in that reduced space.
+- k-means can then be applied to the reduced LSA representation.
+
+============================================================
+19. LARGE LANGUAGE MODELS AND CHATBOTS
+============================================================
+
+Course context
+- The current BUAN 4310 Spell Book includes short and extended demonstrations related to large language models.
+- It also retains the earlier yeoda chatbot demonstration based on matching a user's question to stored input and response text.
+
+Retrieval-style chatbot idea
+- A non-LLM chatbot can compare a new question with stored examples and return the most relevant response.
+- Such a system is limited by the supplied input/response knowledge and by the similarity method used to match questions.
+
+LLM context
+- Large language models can produce more flexible natural-language responses than fixed retrieval systems.
+- Course demonstrations should be treated as demonstrations of the technology and workflow; do not infer additional syllabus requirements from their presence in the Spell Book.
+
+============================================================
+20. CURRENT SPELL BOOK COVERAGE AND IMPLEMENTATIONS
+============================================================
+
+The current BUAN 4310 Spell Book includes demonstrations or examples covering:
+- Basic data manipulation
+- Classification trees
+- Collaborative filtering
+- Cross-validation
+- Data transformation
+- Data visualisation
+- Descriptive data exploration
+- Discriminant analysis
+- GitHub
+- Hierarchical clustering
+- Interactive data visualisation
+- Preliminary data exploration
+- k-nearest neighbours classification
+- k-nearest neighbours regression
+- Large datasets, including an AWS-oriented demonstration
+- Large language models
+- Linear regression
+- Linear regression with transformations
+- Logistic regression
+- Line graphs
+- Market-basket analysis / association rules
+- Model diagnostics
+- Naive Bayes
+- Neural-network classification
+- Neural-network numerical prediction
+- Non-hierarchical clustering
+- Principal component analysis
+- Regression trees, including extended demonstrations
+- Text analytics and text clustering
+- Unbalanced class data
+
+R and Python / Parseltongue
+- The Spell Book provides Python/Parseltongue counterparts for several topics, including classification trees, hierarchical clustering, kNN, logistic regression, Naive Bayes, non-hierarchical clustering and regression trees.
+- The conceptual principles are shared across languages even though function names, libraries and syntax differ.
+- If asked for code, distinguish clearly between R and Python syntax.
+
+Coverage caution
+- Presence in the Spell Book shows that a demonstration exists; it does not by itself prove that the topic is currently assessed, required, optional or covered to a particular depth in a specific term.
+
+============================================================
+21. MODEL-SELECTION PRINCIPLES
 ============================================================
 
 No single metric or algorithm is universally best.
@@ -521,18 +739,25 @@ When comparing models:
 - Be cautious about training performance that is much better than validation performance.
 
 ============================================================
-15. RESPONSE BEHAVIOUR FOR THE CHATBOT
+22. RESPONSE BEHAVIOUR FOR THE CHATBOT
 ============================================================
 
 For questions clearly supported by these notes:
 - Use these notes as the primary source.
 - Preserve the terminology and framing used here.
 - Give concise, accurate answers.
+- Use British English.
+- When both R and Python versions exist, answer in the language requested by the user; if no language is specified, explain the concept first rather than assuming a language.
 
 For machine-learning questions not addressed here:
 - General machine-learning knowledge may be used.
+- Clearly distinguish general knowledge from course-specific claims if the distinction matters.
 - Do not state or imply whether the topic is required, optional, assessed, or part of a syllabus.
 - Do not tell the user that the topic is "not in the required materials" or similar unless explicitly asked about source coverage.
+
+For questions about course coverage:
+- Use the notes and current Spell Book coverage listed above.
+- Do not infer assessment requirements, deadlines, grading rules or syllabus status merely from the existence of a demonstration.
 
 For general non-course questions:
 - General knowledge may be used.
