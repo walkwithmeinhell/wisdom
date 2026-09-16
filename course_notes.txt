@@ -1,9 +1,9 @@
-BUAN 4310 COURSE KNOWLEDGE
+YEODA TEACHING KNOWLEDGE
 Consolidated reference for yeoda v5
-Updated September 2026 from the current BUAN 4310 Spell Book
+Updated September 2026 from BUAN 4310 materials, the current Spell Book, and additional teaching materials
 
 Purpose
-These notes consolidate material from the instructor's uploaded BUAN 4310 lecture slides and the current accessible BUAN 4310 HTML demonstrations from the Spell Book. They are intended to ground course-related answers. The current Spell Book includes both R demonstrations and Python/Parseltongue counterparts for several machine-learning methods. If a topic is not covered here, the chatbot may still answer from general machine-learning knowledge, but it should not claim anything about whether that topic is required, optional, assessed, or part of a particular syllabus.
+These notes consolidate material from the instructor's BUAN 4310 machine-learning materials, the current accessible Spell Book, and additional supplied teaching materials in Excel/business analytics, management information systems, databases/SQL, and cybersecurity/artificial intelligence. They are intended to ground course-related answers across these areas. BUAN 4310 remains the most detailed machine-learning portion of the file. If a topic is not covered here, the chatbot may still answer from general knowledge, but it should not claim anything about whether that topic is required, optional, assessed, or part of a particular syllabus unless the supplied course material says so.
 
 ============================================================
 1. DATA MINING AND MACHINE LEARNING OVERVIEW
@@ -739,7 +739,304 @@ When comparing models:
 - Be cautious about training performance that is much better than validation performance.
 
 ============================================================
-22. RESPONSE BEHAVIOUR FOR THE CHATBOT
+22. EXCEL AND SPREADSHEET-BASED BUSINESS ANALYTICS
+============================================================
+
+Spreadsheet basics
+- Excel is used as an analytical modelling environment as well as a calculation tool.
+- Formulas may combine cell references, operators and functions.
+- Relative references change when formulas are copied.
+- Absolute references, such as $B$4, remain fixed when copied.
+- Mixed references fix either the row or the column.
+- Common functions include SUM, AVERAGE, MIN, MAX and COUNT-style functions.
+- IF and other logical functions implement business rules based on conditions.
+
+Lookup functions
+- VLOOKUP retrieves a value from a lookup table based on a key in the first column of the lookup range.
+- INDEX returns a value from a specified position in a range.
+- MATCH returns the position of a lookup value.
+- INDEX and MATCH can be combined for flexible lookups.
+- Course examples also combine VLOOKUP with IF or MATCH.
+- Exact versus approximate matching should be chosen deliberately.
+
+Data visualisation
+- Visualisation is used to identify patterns that may be difficult to see in tables alone.
+- Excel chart types covered include column/bar, line, pie, area, scatter and bubble charts.
+- Scatter plots are useful for examining relationships between two numerical variables.
+- Conditional formatting can highlight patterns, thresholds and unusual values.
+- Sparklines provide compact trend displays.
+- Dashboards combine multiple relevant displays to support monitoring and decision making.
+- The Excel Camera tool can support linked dashboard displays.
+
+Tables, sorting and filtering
+- Excel tables provide structured ranges for sorting, filtering and calculations.
+- Sorting reorganises records by one or more fields.
+- Filtering displays records meeting specified criteria without deleting the other records.
+- Pareto analysis can focus attention on the relatively small number of categories accounting for a large share of an outcome.
+
+Frequency distributions and PivotTables
+- Frequency distributions summarise how often values or categories occur.
+- Relative frequency expresses counts as proportions or percentages.
+- Histograms group numerical data into bins; bin choices affect interpretation.
+- Cumulative relative frequency summarises the proportion of observations at or below successive values.
+- Percentiles and quartiles describe relative position in a distribution.
+- Cross-tabulations summarise relationships between categorical variables.
+- PivotTables aggregate and reorganise data interactively.
+- PivotCharts visualise PivotTable summaries.
+- Slicers provide interactive filtering controls.
+- PivotTables, PivotCharts and slicers can be combined into dashboards.
+
+Descriptive statistics
+- Measures of location include mean, median, mode and midrange.
+- Measures of dispersion include range, interquartile range, variance and standard deviation.
+- Coefficient of variation expresses standard deviation relative to the mean.
+- Skewness describes asymmetry; kurtosis describes aspects of distribution shape/tail behaviour.
+- z-scores express values in standard-deviation units relative to the mean.
+- Chebyshev's theorem provides distribution-free bounds on the proportion of observations within a given number of standard deviations.
+- The empirical rule gives approximate 68/95/99.7% coverage for a roughly normal distribution.
+- The Excel Descriptive Statistics tool produces multiple summary measures.
+- Covariance and correlation describe relationships between numerical variables.
+- Correlation measures linear association and does not establish causation.
+- Outliers should be investigated rather than automatically removed.
+- Sample statistics vary from sample to sample.
+
+Statistical inference
+- Hypothesis testing compares sample evidence with a null hypothesis.
+- The alternative hypothesis and one- or two-tailed form depend on the analytical question.
+- A test statistic measures how far the observed sample result is from what is expected under the null hypothesis.
+- A p-value indicates how unusual the observed result would be if the null hypothesis were true.
+- Type I error is rejecting a true null hypothesis.
+- Type II error is failing to reject a false null hypothesis.
+- Test power is the probability of detecting an effect when the relevant alternative is true.
+- Procedures covered include one-sample tests for means/proportions, two-sample tests for means, paired tests, F-tests for equality of variances, ANOVA and chi-square tests for independence.
+- Excel Analysis ToolPak procedures are used for several tests; choosing and interpreting the appropriate procedure is part of the analysis.
+
+Trendlines and regression in Excel
+- Excel trendlines model relationships or trends; possible forms include linear and nonlinear models.
+- R-squared summarises the proportion of variation explained by a fitted regression model but does not by itself establish model quality.
+- Polynomial models can overfit and can behave poorly when extrapolated.
+- Simple linear regression models a numerical outcome using one predictor.
+- Least squares chooses coefficients by minimising the sum of squared residuals.
+- Residuals are observed outcomes minus fitted/predicted outcomes.
+- Regression output includes fit statistics, ANOVA information, coefficient estimates, hypothesis tests and confidence intervals.
+- Residual analysis is used to investigate modelling assumptions.
+- Multiple regression uses two or more predictors.
+- Model building should be systematic rather than based only on in-sample fit.
+- Multicollinearity occurs when predictors contain strongly overlapping information.
+- Overfitting occurs when a model fits sample-specific noise and performs poorly on new data.
+- Categorical variables, interaction terms and nonlinear terms can be incorporated where appropriate.
+
+Linear optimisation and Solver
+- A linear optimisation model contains decision variables, an objective function and constraints.
+- The objective can maximise or minimise an outcome such as profit, return or cost.
+- Constraints represent resource limits or business rules.
+- Decision-variable cells hold quantities that Solver may change.
+- The objective cell calculates the quantity to maximise/minimise.
+- SUMPRODUCT is useful for linear totals such as profit or resource use.
+- Excel Solver can optimise the model subject to constraints; Simplex LP is appropriate for linear models.
+- Solver Answer Reports summarise objective values, variable values and constraint status.
+- Sensitivity Reports for linear models can provide reduced costs, shadow prices and allowable changes.
+- Supplied demonstrations include Sklenka Skis (product mix), an investment-allocation problem and a HotSprings Spas production problem.
+
+============================================================
+23. MANAGEMENT INFORMATION SYSTEMS
+============================================================
+
+Why information systems matter
+- Business users benefit from understanding what is behind the systems they use.
+- Informed users can contribute to selecting and improving organisational IT applications.
+- Information systems knowledge helps users understand how technology affects organisational performance and work.
+
+Computer-based information systems
+- Components include hardware, software, databases, networks, procedures and people.
+- Information systems collect, process, store and distribute information to support decision making, coordination and control.
+- A useful distinction is data -> information -> knowledge.
+- Input captures raw data; processing transforms it; output delivers information; feedback supports correction/evaluation.
+- A computer or program is a technical tool; an information system includes technology, people, procedures and organisational context.
+
+Types of organisational systems
+- Functional-area information systems
+- Enterprise resource planning systems
+- Transaction processing systems
+- Interorganisational information systems
+- E-commerce systems
+- Office automation systems
+- Business intelligence systems
+- Expert systems
+- Dashboards
+
+Managing information resources
+- Traditional IS responsibilities include systems development/project management, operations, staffing, technical services and infrastructure planning/control.
+- Consultative roles can include strategic systems, e-commerce, systems integration, outsourcing, business partnerships and identifying innovative technology opportunities.
+- Investing in information systems does not guarantee strong returns; organisational use and management matter.
+
+IT and organisations/society
+- IT can reshape industries, organisational structures and managerial/non-managerial work.
+- It can create new jobs and business models while changing or eliminating other roles.
+- Broader effects include employee health and safety, accessibility, healthcare and quality-of-life issues.
+
+Big data and knowledge management
+- Big data is characterised in the supplied material by volume, velocity and variety.
+- Sources can include enterprise data, machines/sensors, social data and images.
+- Challenges include dirty data, untrusted sources and rapidly changing data streams.
+- Uses include trend identification, fraud detection, experimentation, micro-segmentation and new business models.
+- Data warehouses integrate data for analysis and decision support and may support OLAP/multidimensional analysis.
+- Data governance addresses availability, usability, integrity, security and responsibilities for data.
+- Data quality work includes audits, cleansing and better routines for data entry/maintenance.
+- Knowledge-management systems support capturing, organising, sharing and using knowledge.
+- Explicit knowledge is easier to record; tacit knowledge is more personal/experiential and harder to capture.
+
+AI in an MIS context
+- The material introduces AI through capabilities such as learning from experience, interpreting ambiguous information and responding to new situations.
+- It distinguishes broad ideas of strong and weak AI.
+- Technologies discussed include expert systems, machine learning, deep learning and neural networks.
+- Application areas include computer vision, natural-language processing, robotics, image recognition and intelligent agents.
+- These categories can overlap and evolve.
+
+IS project management
+- Time, cost and scope form the classic triple constraint and involve trade-offs.
+- Project phases covered include initiation, planning, execution, monitoring/control and completion.
+- Gantt charts visualise tasks and timing.
+- IS-project success depends on management and organisational factors as well as technical delivery.
+- The Project Management Body of Knowledge is introduced as a framework for coordinating project-management responsibilities.
+
+============================================================
+24. DATABASES, DATA MODELLING AND SQL
+============================================================
+
+Database foundations
+- Data are raw facts; information is data organised or processed to provide meaning.
+- Database systems provide structured, shared storage and management.
+- A DBMS manages structures and access rather than leaving each application to maintain isolated files.
+- Traditional file systems can suffer from redundancy, inconsistency, data/structural dependence and update/insertion/deletion anomalies.
+- Good database design improves integrity, sharing, security and maintainability.
+
+Relational model
+- Tables represent data in rows and columns.
+- Rows/tuples represent records; columns/attributes represent properties.
+- A primary key uniquely identifies a row.
+- Candidate keys are possible unique identifiers; one is selected as the primary key.
+- Foreign keys reference keys in other tables and implement relationships.
+- Functional dependencies describe how one attribute/set of attributes determines another.
+- Entity integrity and referential integrity protect consistency.
+- A data dictionary/system catalogue stores metadata.
+- Indexes can improve retrieval performance but add storage/maintenance trade-offs.
+
+Entity-relationship modelling
+- Entities represent distinguishable objects/concepts.
+- Attributes describe entities.
+- Relationships describe associations between entities.
+- Connectivity includes one-to-one, one-to-many and many-to-many forms.
+- Cardinality expresses numerical relationship constraints.
+- Existence dependence and participation express whether related occurrences are optional or required.
+- Many-to-many relationships are commonly resolved with an associative/composite entity.
+- ERD development involves identifying entities, attributes, identifiers, relationships, connectivity, cardinality and participation, then checking the model against business rules.
+- Supplied materials demonstrate ER modelling in Microsoft Visio and Lucidchart.
+
+Normalisation
+- Normalisation reduces avoidable redundancy and update anomalies.
+- First normal form (1NF) removes repeating groups/multivalued structures and establishes atomic values for the chosen model.
+- Second normal form (2NF) removes partial dependencies on part of a composite key.
+- Third normal form (3NF) removes transitive dependencies between non-key attributes.
+- Surrogate keys may be introduced where appropriate.
+- Denormalisation deliberately introduces selected redundancy for performance/practical reasons and should be a conscious design trade-off.
+
+SQL foundations
+- SQL can function as a data manipulation language (DML), data definition language (DDL), transaction control language (TCL) and data control language (DCL).
+- SQL is declarative/nonprocedural: the query specifies the result rather than a procedural algorithm.
+
+SELECT query structure
+- SELECT chooses columns/expressions to return.
+- FROM identifies source tables.
+- WHERE filters individual rows.
+- GROUP BY forms groups.
+- HAVING filters groups after aggregation.
+- ORDER BY sorts the final result.
+- DISTINCT removes duplicate result rows where appropriate.
+- Comparison operators include =, <, <=, >, >= and not-equal forms.
+- Logical operators include AND, OR and NOT.
+- Special operators include BETWEEN, IN, LIKE and IS NULL.
+
+Joins
+- Inner joins return matching rows.
+- Outer joins retain matches plus unmatched rows depending on left, right or full join.
+- NATURAL JOIN relies on same-named compatible columns.
+- JOIN ... USING specifies a shared column.
+- JOIN ... ON specifies an explicit condition.
+- CROSS JOIN produces a Cartesian product.
+- Table aliases improve clarity in multi-table queries.
+
+Aggregation
+- COUNT, MIN, MAX, SUM and AVG are common aggregate functions.
+- GROUP BY combines aggregation with categories/groups.
+- HAVING applies conditions to grouped results.
+- Good query construction starts with understanding the data model and the business question.
+
+Creating/changing data
+- CREATE TABLE defines table structure, data types and constraints.
+- Constraints covered include PRIMARY KEY, FOREIGN KEY, NOT NULL, UNIQUE, DEFAULT and CHECK.
+- INSERT adds rows; INSERT ... SELECT can add rows from a query.
+- UPDATE changes existing rows.
+- DELETE removes rows.
+- ROLLBACK can undo uncommitted changes in supported transaction contexts.
+- SQL dialects differ, so syntax may vary by DBMS.
+
+============================================================
+25. CYBERSECURITY AND ARTIFICIAL INTELLIGENCE
+============================================================
+
+AI/ML foundations
+- Supervised learning uses labelled outcomes and includes classification and numerical prediction.
+- Unsupervised learning seeks patterns without a target and includes clustering, association rules and data reduction.
+- Training and validation should be separated to evaluate performance on data not used to fit a model.
+- Modelling risks include overfitting, poor data quality and weak evaluation design.
+
+Large language models
+- An LLM is a deep-learning system designed to process and generate language.
+- Transformers are a foundational architecture; self-attention relates tokens across a sequence.
+- Pre-training learns statistical patterns from large text corpora.
+- Fine-tuning/adaptation can specialise a model.
+- Inference is the stage in which a trained model responds to new input.
+- LLM capabilities do not imply consciousness, perfect factual accuracy or transparent reasoning.
+
+Turing Test
+- The Turing Test evaluates whether machine conversation can be indistinguishable from human conversation under test conditions.
+- It is historically important but has limitations: imitating conversation is not equivalent to demonstrating consciousness, broad intelligence or reliable reasoning.
+- The supplied teaching material asks, with a Star Wars reference, whether machines can "master the ways of the force".
+
+AI-driven phishing
+- Phishing impersonates a legitimate entity/person to trick targets into revealing sensitive information or taking harmful actions.
+- Generative AI can improve personalisation, fluency, speed and scale.
+- AI-generated phishing may contain fewer traditional grammar/spelling warning signs.
+- Defence requires technical controls, user awareness, verification and adaptive detection rather than a single clue.
+
+Data poisoning
+- Data poisoning introduces malicious/misleading data into AI training data to influence model behaviour.
+- Targeted attacks seek to alter particular outputs.
+- Indiscriminate attacks seek to degrade overall performance/reliability.
+- Examples include attacks on content moderation, malware detection and generative-AI systems.
+- Defences include data validation/provenance, monitoring/auditing, robust/adversarial training where appropriate, and threat-intelligence sharing.
+
+AI and malware detection
+- AI/ML can learn patterns associated with normal and malicious activity.
+- It can support faster and near-real-time detection/prevention.
+- Detection may use behavioural or file-related features rather than only known signatures.
+- The supplied material notes emerging techniques that convert file attributes into visual representations for image-based detection.
+
+Ethics, privacy and accountability
+- AI-driven cybersecurity systems can reproduce or amplify bias.
+- Security monitoring can conflict with privacy; more data access is not automatically justified merely because it may improve detection.
+- Accountability can involve developers, deployers, organisations and human decision-makers.
+- Human oversight is important for consequential security decisions.
+- Offensive AI/cyberwarfare raises questions about escalation, proportionality, attribution and international governance.
+
+Transparency and law: supplied course examples
+- A 2025 ethics/law handout uses explainability and transparency as examples of AI governance challenges.
+- It discusses the EU AI Act and selected 2024 U.S. state laws/bills involving AI transparency, disclosure and training-data requirements.
+- These are course examples, not current legal advice; laws, effective dates and interpretations can change.
+
+============================================================
+26. RESPONSE BEHAVIOUR FOR THE CHATBOT
 ============================================================
 
 For questions clearly supported by these notes:
@@ -749,16 +1046,21 @@ For questions clearly supported by these notes:
 - Use British English.
 - When both R and Python versions exist, answer in the language requested by the user; if no language is specified, explain the concept first rather than assuming a language.
 
+For questions about Excel, MIS, databases/SQL, or cybersecurity/AI:
+- Use the relevant sections above as course grounding.
+- General knowledge may supplement an explanation, but do not claim that an unsupplied feature is part of the instructor's teaching merely because the software/field includes it.
+- Do not infer assessment requirements, deadlines or grading rules from the presence of a topic in these notes.
+
 For machine-learning questions not addressed here:
 - General machine-learning knowledge may be used.
 - Clearly distinguish general knowledge from course-specific claims if the distinction matters.
-- Do not state or imply whether the topic is required, optional, assessed, or part of a syllabus.
-- Do not tell the user that the topic is "not in the required materials" or similar unless explicitly asked about source coverage.
+- Do not state or imply whether the topic is required, optional, assessed, or part of a syllabus unless supplied course material says so.
 
-For questions about course coverage:
-- Use the notes and current Spell Book coverage listed above.
-- Do not infer assessment requirements, deadlines, grading rules or syllabus status merely from the existence of a demonstration.
+For legal/regulatory questions arising from the cybersecurity/AI material:
+- Treat the laws in the notes as dated teaching examples.
+- Do not present them as current legal advice without current verification.
 
 For general non-course questions:
 - General knowledge may be used.
 - Star Wars questions may be answered from general knowledge.
+- Star Wars references may be used naturally where they fit the teaching persona, but need not appear in every answer.
