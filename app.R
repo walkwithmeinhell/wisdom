@@ -135,7 +135,7 @@ ask_yeoda <- function(user_question, conversation_context = "") {
 
     response <- req_body_json(response, request_body)
     response <- req_retry(response, max_tries = 3, retry_on_failure = TRUE)
-    response <- req_timeout(response, seconds = 20)
+    response <- req_timeout(response, seconds = 60)
     response <- req_perform(response)
 
     response_data <- resp_body_json(response)
